@@ -1,9 +1,15 @@
 import whois,sys,socket
 host_whois = whois.whois(sys.argv[1])
-domain_emails = [host_whois.emails]
+if host_whois.emails != None:
+        domain_emails = [host_whois.emails]
+else:
+        domain_emails = []
 domain_ip = socket.gethostbyname(sys.argv[1])
 ip_whois = whois.whois(domain_ip)
-ip_emails = [ip_whois.emails]
+if ip_whois.emails != None:
+        ip_emails = [ip_whois.emails]
+else:
+        ip_emails = []
 emails = domain_emails + ip_emails
 unique = []
 abuse_emails = []
